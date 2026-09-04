@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simone — Tarológa e Sensitiva | Sorocaba, SP</title>
+<meta name="description" content="Consultas de Tarot com Simone, Tarológa e Sensitiva. Leituras com Zé Pilintra, Maria Padilha, Cigana e Rosa Caveira. Atendimento online, sob agendamento. Sorocaba, SP.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --preto: #140B0D;
+    --vinho-fundo: #24121A;
+    --vinho: #6E1327;
+    --vinho-claro: #8C2036;
+    --dourado: #BD9247;
+    --dourado-claro: #D9BC85;
+    --pergaminho: #ECE1C9;
+    --pergaminho-suave: #C9BBA0;
+    --linha: rgba(189,146,71,0.28);
+
+    --display: 'Cormorant Garamond', serif;
+    --corpo: 'Jost', sans-serif;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--preto);
+    color:var(--pergaminho);
+    font-family:var(--corpo);
+    font-weight:300;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img{max-width:100%; display:block;}
+
+  a{color:inherit;}
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- corner ornament ---------- */
+  .ornamento{
+    position:absolute;
+    width:46px; height:46px;
+    pointer-events:none;
+    opacity:0.85;
+  }
+  .ornamento svg{width:100%; height:100%;}
+  .canto-tl{top:14px; left:14px;}
+  .canto-tr{top:14px; right:14px; transform:scaleX(-1);}
+  .canto-bl{bottom:14px; left:14px; transform:scaleY(-1);}
+  .canto-br{bottom:14px; right:14px; transform:scale(-1,-1);}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(20,11,13,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--linha);
+  }
+  .header-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px;
+    max-width:1080px; margin:0 auto;
+  }
+  .logo{
+    font-family:var(--display);
+    font-size:1.6rem;
+    letter-spacing:0.04em;
+    color:var(--pergaminho);
+  }
+  .logo span{color:var(--dourado-claro);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--corpo);
+    font-size:0.92rem;
+    font-weight:500;
+    padding:11px 22px;
+    border-radius:2px;
+    text-decoration:none;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primaria{
+    background:linear-gradient(180deg, var(--dourado-claro), var(--dourado));
+    color:#231208;
+  }
+  .btn-primaria:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 24px rgba(189,146,71,0.28);
+  }
+  .btn-contorno{
+    border:1px solid var(--dourado);
+    color:var(--dourado-claro);
+    background:transparent;
+  }
+  .btn-contorno:hover{
+    background:rgba(189,146,71,0.1);
+  }
+  .btn-icon{width:16px; height:16px; flex:none;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:64px 0 88px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 82% 18%, rgba(110,19,39,0.35), transparent 55%),
+      radial-gradient(circle at 10% 85%, rgba(189,146,71,0.10), transparent 45%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    position:relative;
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero-eyebrow{
+    font-family:var(--display);
+    font-style:italic;
+    font-size:1.15rem;
+    color:var(--dourado-claro);
+    margin-bottom:18px;
+  }
+  h1{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(2.6rem, 5vw, 4rem);
+    line-height:1.06;
+    color:var(--pergaminho);
+    margin-bottom:20px;
+  }
+  h1 em{
+    font-style:italic;
+    color:var(--dourado-claro);
+  }
+  .hero-texto{
+    max-width:46ch;
+    font-size:1.05rem;
+    color:var(--pergaminho-suave);
+    margin-bottom:34px;
+  }
+  .hero-guias{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 26px;
+    margin-bottom:38px;
+    padding-top:22px;
+    border-top:1px solid var(--linha);
+  }
+  .guia-tag{
+    font-family:var(--display);
+    font-style:italic;
+    font-size:1.02rem;
+    color:var(--pergaminho);
+  }
+  .guia-tag::before{
+    content:"✦";
+    color:var(--dourado);
+    margin-right:8px;
+    font-size:0.75rem;
+  }
+  .hero-ctas{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .hero-local{
+    margin-top:26px;
+    font-size:0.88rem;
+    letter-spacing:0.02em;
+    color:var(--pergaminho-suave);
+  }
+
+  .hero-foto{
+    position:relative;
+    border-radius:2px;
+  }
+  .foto-moldura{
+    position:relative;
+    border:1px solid var(--linha);
+    padding:14px;
+    background:var(--vinho-fundo);
+  }
+  .foto-moldura img{
+    width:100%;
+    filter:saturate(0.92) contrast(1.03);
+    border:1px solid rgba(189,146,71,0.18);
+  }
+
+  /* ---------- section shared ---------- */
+  section{
+    padding:86px 0;
+    position:relative;
+  }
+  .secao-titulo{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(2rem, 3.4vw, 2.7rem);
+    color:var(--pergaminho);
+    margin-bottom:18px;
+  }
+  .secao-titulo em{font-style:italic; color:var(--dourado-claro);}
+  .secao-intro{
+    max-width:58ch;
+    color:var(--pergaminho-suave);
+    font-size:1.02rem;
+  }
+  .linha-fina{
+    width:64px; height:1px;
+    background:var(--dourado);
+    margin-bottom:22px;
+  }
+
+  /* ---------- sobre ---------- */
+  .sobre{
+    background:linear-gradient(180deg, var(--preto), var(--vinho-fundo) 60%, var(--preto));
+    border-top:1px solid var(--linha);
+    border-bottom:1px solid var(--linha);
+  }
+  .sobre-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:56px;
+    align-items:center;
+    margin-top:44px;
+  }
+  .sobre-foto{
+    position:relative;
+    border:1px solid var(--linha);
+    padding:10px;
+  }
+  .sobre-foto img{filter:sepia(0.12) saturate(0.9);}
+  .sobre-texto p{
+    color:var(--pergaminho-suave);
+    margin-bottom:16px;
+    font-size:1.02rem;
+  }
+  .sobre-texto p:first-child{
+    font-family:var(--display);
+    font-size:1.35rem;
+    font-style:italic;
+    color:var(--pergaminho);
+    line-height:1.45;
+  }
+
+  /* ---------- guias / decks ---------- */
+  .guias-lista{
+    margin-top:48px;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--linha);
+    border:1px solid var(--linha);
+  }
+  .guia-item{
+    background:var(--preto);
+    padding:34px 32px;
+  }
+  .guia-numero{
+    font-family:var(--display);
+    font-style:italic;
+    color:var(--dourado);
+    font-size:0.95rem;
+    margin-bottom:10px;
+    display:block;
+  }
+  .guia-item h3{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:1.5rem;
+    color:var(--pergaminho);
+    margin-bottom:10px;
+  }
+  .guia-item p{
+    color:var(--pergaminho-suave);
+    font-size:0.96rem;
+  }
+
+  /* ---------- como funciona ---------- */
+  .funciona{
+    background:var(--vinho-fundo);
+    border-bottom:1px solid var(--linha);
+  }
+  .funciona-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    margin-top:44px;
+    align-items:start;
+  }
+  .passos{
+    display:flex;
+    flex-direction:column;
+  }
+  .passo{
+    display:flex;
+    gap:20px;
+    padding:24px 0;
+    border-bottom:1px solid var(--linha);
+  }
+  .passo:last-child{border-bottom:none;}
+  .passo-num{
+    font-family:var(--display);
+    font-size:1.7rem;
+    font-style:italic;
+    color:var(--dourado);
+    flex:none;
+    width:44px;
+  }
+  .passo h4{
+    font-family:var(--corpo);
+    font-weight:500;
+    font-size:1.02rem;
+    color:var(--pergaminho);
+    margin-bottom:6px;
+  }
+  .passo p{
+    color:var(--pergaminho-suave);
+    font-size:0.94rem;
+  }
+  .funciona-foto{
+    border:1px solid var(--linha);
+    padding:10px;
+    align-self:stretch;
+  }
+  .funciona-foto img{height:100%; object-fit:cover; filter:saturate(0.9);}
+
+  /* ---------- localização ---------- */
+  .local{
+    text-align:center;
+  }
+  .local-inner{
+    max-width:640px;
+    margin:0 auto;
+  }
+  .local .linha-fina{margin-left:auto; margin-right:auto;}
+  .local-cidade{
+    font-family:var(--display);
+    font-style:italic;
+    font-size:1.6rem;
+    color:var(--dourado-claro);
+    margin:20px 0 8px;
+  }
+
+  /* ---------- contato final ---------- */
+  .contato{
+    background:radial-gradient(circle at 50% 0%, var(--vinho) 0%, var(--vinho-fundo) 55%, var(--preto) 100%);
+    text-align:center;
+    border-top:1px solid var(--linha);
+  }
+  .contato .secao-titulo{max-width:20ch; margin-left:auto; margin-right:auto;}
+  .contato .secao-intro{margin-left:auto; margin-right:auto; margin-bottom:36px;}
+  .contato-numero{
+    display:block;
+    font-family:var(--display);
+    font-size:1.3rem;
+    color:var(--pergaminho-suave);
+    margin-top:20px;
+    letter-spacing:0.03em;
+  }
+  .btn-grande{
+    font-size:1.05rem;
+    padding:16px 40px;
+  }
+
+  footer{
+    padding:32px 0;
+    text-align:center;
+    font-size:0.82rem;
+    color:var(--pergaminho-suave);
+    border-top:1px solid var(--linha);
+  }
+
+  /* ---------- whatsapp flutuante ---------- */
+  .whats-flutuante{
+    position:fixed;
+    bottom:22px; right:22px;
+    z-index:60;
+    width:56px; height:56px;
+    border-radius:50%;
+    background:linear-gradient(180deg, var(--dourado-claro), var(--dourado));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 24px rgba(0,0,0,0.5);
+    transition:transform .25s ease;
+  }
+  .whats-flutuante:hover{transform:scale(1.07);}
+  .whats-flutuante svg{width:26px; height:26px; color:#231208;}
+
+  /* ---------- responsivo ---------- */
+  @media (max-width:860px){
+    .hero-grid, .sobre-grid, .funciona-grid{
+      grid-template-columns:1fr;
+    }
+    .hero-foto{order:-1;}
+    .guias-lista{grid-template-columns:1fr;}
+    .header-inner .btn span{display:none;}
+  }
+  @media (max-width:520px){
+    section{padding:60px 0;}
+    .guia-item{padding:26px 22px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Simone<span> · Tarot</span></div>
+    <a class="btn btn-primaria" href="https://wa.me/5515997716690?text=Ol%C3%A1%2C%20Simone!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" rel="noopener">
+      <span>Agendar no WhatsApp</span>
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="hero-eyebrow">Tarológa e Sensitiva</p>
+        <h1>Clareza para os seus <em>caminhos</em>, através das cartas</h1>
+        <p class="hero-texto">
+          Simone conduz consultas de Tarot com escuta atenta e leitura sensitiva, buscando trazer orientação para as questões de amor, trabalho, dinheiro e caminhos espirituais. Atendimento 100% online, sob agendamento.
+        </p>
+
+        <div class="hero-guias">
+          <span class="guia-tag">Zé Pilintra</span>
+          <span class="guia-tag">Maria Padilha</span>
+          <span class="guia-tag">Cigana</span>
+          <span class="guia-tag">Rosa Caveira</span>
+        </div>
+
+        <div class="hero-ctas">
+          <a class="btn btn-primaria" href="https://wa.me/5515997716690?text=Ol%C3%A1%2C%20Simone!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" rel="noopener">Marcar minha consulta</a>
+          <a class="btn btn-contorno" href="#guias">Conhecer as leituras</a>
+        </div>
+
+        <p class="hero-local">Atendimento online · Sorocaba, SP</p>
+      </div>
+
+      <div class="hero-foto">
+        <div class="foto-moldura">
+          <div class="ornamento canto-tl"><svg viewBox="0 0 46 46" fill="none"><path d="M2 2 L2 20 M2 2 L20 2" stroke="#BD9247" stroke-width="1"/><circle cx="2" cy="2" r="3" fill="#BD9247"/></svg></div>
+          <div class="ornamento canto-tr"><svg viewBox="0 0 46 46" fill="none"><path d="M2 2 L2 20 M2 2 L20 2" stroke="#BD9247" stroke-width="1"/><circle cx="2" cy="2" r="3" fill="#BD9247"/></svg></div>
+          <img src="assets/simone-retrato.jpg" alt="Simone, tarológa e sensitiva, segurando um baralho de tarot">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sobre">
+    <div class="wrap">
+      <div class="sobre-grid">
+        <div class="sobre-foto">
+          <img src="assets/altar.jpg" alt="Mesa de trabalho de Simone, com roda de consulta, cartas e ferramentas espirituais">
+        </div>
+        <div class="sobre-texto">
+          <p>"Cada consulta é um espaço de escuta — as cartas abrem o caminho, mas quem decide é sempre você."</p>
+          <p>Simone atende consulentes que buscam entender melhor um momento de vida, tomar uma decisão ou simplesmente ter mais clareza sobre o que sentem. O trabalho une a leitura do Tarot à sensitividade, com respeito pela história de cada pessoa que senta à mesa — mesmo que essa mesa, hoje, seja uma videochamada.</p>
+          <p>As consultas são feitas com cuidado e sigilo, sempre sob agendamento prévio, para que haja tempo e presença para o que você traz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="guias" class="guias">
+    <div class="wrap">
+      <p class="secao-eyebrow"></p>
+      <div class="linha-fina"></div>
+      <h2 class="secao-titulo">Guias e <em>leituras</em> disponíveis</h2>
+      <p class="secao-intro">Cada consulta pode ser conduzida com diferentes baralhos e entidades de trabalho, de acordo com a questão trazida.</p>
+
+      <div class="guias-lista">
+        <div class="guia-item">
+          <span class="guia-numero">Guia</span>
+          <h3>Zé Pilintra</h3>
+          <p>Leitura ligada à malandragem, aos caminhos abertos e à proteção nas questões práticas do dia a dia — trabalho, dinheiro e decisões que exigem jogo de cintura.</p>
+        </div>
+        <div class="guia-item">
+          <span class="guia-numero">Guia</span>
+          <h3>Maria Padilha</h3>
+          <p>Leitura voltada às questões de amor, poder pessoal e conquista — indicada para quem busca força e clareza para retomar as rédeas da própria vida.</p>
+        </div>
+        <div class="guia-item">
+          <span class="guia-numero">Baralho</span>
+          <h3>Cigana</h3>
+          <p>Leitura tradicional cigana, usada para dar panorama geral sobre um período — bom para quem quer entender o momento presente como um todo.</p>
+        </div>
+        <div class="guia-item">
+          <span class="guia-numero">Baralho</span>
+          <h3>Rosa Caveira</h3>
+          <p>Leitura direta e sem rodeios, indicada para quem quer respostas objetivas sobre uma pergunta específica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="funciona">
+    <div class="wrap">
+      <div class="linha-fina"></div>
+      <h2 class="secao-titulo">Como funciona <em>o atendimento</em></h2>
+      <p class="secao-intro">O atendimento é feito de forma online, sob agendamento prévio pelo WhatsApp.</p>
+
+      <div class="funciona-grid">
+        <div class="passos">
+          <div class="passo">
+            <span class="passo-num">1</span>
+            <div>
+              <h4>Chame no WhatsApp</h4>
+              <p>Envie uma mensagem contando, em poucas palavras, o que você gostaria de trazer para a consulta.</p>
+            </div>
+          </div>
+          <div class="passo">
+            <span class="passo-num">2</span>
+            <div>
+              <h4>Agende um horário</h4>
+              <p>Simone combina com você o melhor dia e horário para o atendimento, de acordo com a agenda.</p>
+            </div>
+          </div>
+          <div class="passo">
+            <span class="passo-num">3</span>
+            <div>
+              <h4>Consulta online</h4>
+              <p>No horário marcado, a leitura acontece por chamada, com o baralho mais indicado para a sua questão.</p>
+            </div>
+          </div>
+        </div>
+        <div class="funciona-foto">
+          <img src="assets/cartas.jpg" alt="Cartas de tarot dispostas sobre a mesa de trabalho de Simone">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="funciona" style="border-top:1px solid var(--linha); border-bottom:1px solid var(--linha); background:var(--vinho-fundo);">
+    <div class="wrap" style="text-align:center;">
+      <div class="linha-fina" style="margin-left:auto; margin-right:auto;"></div>
+      <h2 class="secao-titulo">Indique e <em>ganhe</em></h2>
+      <p class="secao-intro" style="margin:0 auto 30px;">A cada 2 indicações suas que fecharem uma tiragem com Simone, você ganha 1 tiragem gratuita.</p>
+      <a class="btn btn-primaria" href="https://wa.me/5515997716690?text=Ol%C3%A1%2C%20Simone!%20Quero%20saber%20mais%20sobre%20o%20programa%20de%20indica%C3%A7%C3%B5es." target="_blank" rel="noopener">Saber mais no WhatsApp</a>
+    </div>
+  </section>
+
+  <section class="local">
+    <div class="wrap local-inner">
+      <div class="linha-fina"></div>
+      <h2 class="secao-titulo">Atendimento <em>online</em>, sempre sob agendamento</h2>
+      <p class="local-cidade">Sorocaba — SP</p>
+      <p class="secao-intro" style="margin:0 auto;">Mesmo à distância, o cuidado é o mesmo de uma consulta presencial. Basta chamar no WhatsApp para combinar o seu horário.</p>
+    </div>
+  </section>
+
+  <section class="contato">
+    <div class="wrap">
+      <div class="linha-fina" style="margin-left:auto; margin-right:auto;"></div>
+      <h2 class="secao-titulo">Pronta para te <em>ouvir</em></h2>
+      <p class="secao-intro">Chame Simone no WhatsApp para agendar sua consulta e entender melhor os caminhos à sua frente.</p>
+      <a class="btn btn-primaria btn-grande" href="https://wa.me/5515997716690?text=Ol%C3%A1%2C%20Simone!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">Simone · Tarológa e Sensitiva · Sorocaba, SP · Atendimento online sob agendamento</div>
+</footer>
+
+<a class="whats-flutuante" href="https://wa.me/5515997716690?text=Ol%C3%A1%2C%20Simone!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67c2.24 0 4.35.87 5.93 2.45a8.23 8.23 0 0 1 2.43 5.88c0 4.59-3.74 8.33-8.35 8.33a8.3 8.3 0 0 1-4.24-1.16l-.3-.18-3.12.82.83-3.04-.2-.31a8.24 8.24 0 0 1-1.27-4.42c0-4.61 3.74-8.37 8.33-8.37M8.53 6.98c-.17 0-.45.06-.68.32-.24.25-.9.88-.9 2.15s.92 2.5 1.05 2.67c.13.17 1.8 2.86 4.43 3.9 2.19.87 2.63.7 3.11.65.48-.04 1.53-.62 1.75-1.22.22-.6.22-1.11.15-1.22-.06-.11-.24-.17-.5-.3-.26-.13-1.53-.75-1.77-.84-.24-.09-.41-.13-.58.13-.17.26-.66.84-.81 1-.15.17-.3.19-.56.06-.26-.13-1.09-.4-2.08-1.28-.77-.68-1.29-1.53-1.44-1.79-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.43-.8-1.95-.21-.5-.42-.44-.58-.45z"/></svg>
+</a>
+
+</body>
+</html>
